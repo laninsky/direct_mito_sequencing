@@ -11,7 +11,7 @@
 To run, mito_shell.sh needs a parameters file (mito_shell_params.txt) with the following:
 ```
 path/to/trinity/executable
-path/to/samples_file/for/trinity
+path/to/samples_file/with/read/locations
 max_memory
 number_of_cores
 ```
