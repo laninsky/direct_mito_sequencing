@@ -62,7 +62,7 @@ B6	/data/alana/wasp/B6_trinity_out_dir.Trinity.fasta
 B7	/data/alana/wasp/B7_trinity_out_dir.Trinity.fasta
 ```
 
-To execute 2_blast_fishing.sh:
+# To execute 2_blast_fishing.sh:
 Make sure mito_shell_params.txt is in the same directory as 2_blast_fishing.sh, and then...
 ```
 bash 2_blast_fishing.sh
