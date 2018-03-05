@@ -36,7 +36,8 @@ B8	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B8/B8_R1.fq.gz	/mnt/hcs-gemmell/wa
 B9	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B9/B9_R1.fq.gz	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B9/B9_R2.fq.gz
 B10	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B10/B10_R1.fq.gz	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B10/B10_R2.fq.gz
 ```
-# After getting all of this together, execute 1_denovo.sh by:
+# To execute 1_denovo.sh:
+Make sure mito_shell_params.txt is in the same directory as 1_denovo.sh, and then...
 ```
 bash 1_denovo.sh
 ```
