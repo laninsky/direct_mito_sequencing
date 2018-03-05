@@ -1,7 +1,15 @@
 # direct_mito_sequencing
 
-You've got targetted next-generation sequencing data of mitogenomes. You've cleaned your data and have paired end sequencing for each file and now you want to do a de novo assembly of the mitogenomes, followed by reference mapping to obtain coverage data for each of your samples.
+You've got targetted next-generation sequencing data of mitogenomes and now you want to do a de novo assembly of the mitogenomes, followed by reference mapping to obtain coverage data for each of your samples.
 
+mito_shell.sh will wrap the various programs needed for this, but it needs a few things from you:
+1) Cleaned paired end sequencing for each sample
+2) Samtools installed in your $PATH
+3) A parameters file (mito_shell_params.txt), described below
+4) A samples_file for Trinity (described below too)
+
+
+# A parameters file (mito_shell_params.txt), described below
 To run, mito_shell.sh needs a parameters file (mito_shell_params.txt) with the following:
 ```
 path/to/trinity/executable
@@ -19,7 +27,7 @@ samples_file.txt # See below for an example of what the samples_file should look
 
 ```
 
-# example of samples_file (tab delimited) for Trinity
+# A samples_file for Trinity example (tab-delimited)
 ```
 #B1	B1	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B1/B1_R1.fq.gz	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B1/B1_R2.fq.gz
 #B2	B2	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B2/B2_R1.fq.gz	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B2/B2_R2.fq.gz
