@@ -10,4 +10,7 @@ do samplename=`tail -n+$i $samplesfilepath | head -n1 | awk '{print $1}'`;
 left=`tail -n+$i $samplesfilepath | head -n1 | awk '{print $2}'`;
 right=`tail -n+$i $samplesfilepath | head -n1 | awk '{print $3}'`;
 $trinitypath --seqType fq --max_memory $maxmemory --left $left --right $right --CPU $numbercores --output  ${samplename}_trinity_out_dir --full_cleanup >> 1_denovo.log
+rm ${samplename}_trinity_out_dir.fasta.gene_trans_map;
 done
+
+
