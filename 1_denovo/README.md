@@ -13,7 +13,6 @@ path/to/trinity/executable
 path/to/samples_file/for/trinity
 max_memory
 number_of_cores
-path/to/mitogenome/references
 ```
 e.g.
 ```
