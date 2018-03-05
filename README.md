@@ -4,10 +4,11 @@ You've got targetted next-generation sequencing data of mitogenomes and now you 
 
 mito_shell.sh will wrap the various programs needed for this, but it needs a few things from you:
 1) Cleaned paired end sequencing for each sample
-2) samtools installed in your $PATH
-3) jellyfish installed in your $PATH
-4) A parameters file (mito_shell_params.txt), described below
-5) A samples_file for Trinity (described below too)
+2) samtools installed in your $PATH (Trinity dependency)
+3) jellyfish installed in your $PATH (Trinity dependency)
+4) salmon installed in your $PATH (Trinity dependency)
+5) A parameters file (mito_shell_params.txt), described below
+6) A samples_file for Trinity (described below too)
 
 
 # The parameters file (mito_shell_params.txt)
