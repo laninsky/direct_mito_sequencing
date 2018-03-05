@@ -51,7 +51,7 @@ reference.fa           # located in the working folder so not giving absolute pa
 ```
 
 # The text file with the path to each sample's fasta file
-(only needed if you aren't sticking Step_1 in at Line 8 - just gives name and location of the assembly for each sample, tab delimited)
+Only needed if you aren't sticking Step_1 in at Line 8 - just gives name and location of the assembly for each sample, tab delimited. In the above example, this file is called sample_fasta_names.txt
 ```
 B1	/data/alana/wasp/B1_trinity_out_dir.Trinity.fasta
 B2	/data/alana/wasp/B2_trinity_out_dir.Trinity.fasta
