@@ -12,10 +12,10 @@ To run, we need to modify our mito_shell_params.txt from 1_denovo (if you are jo
 
 # The parameters file (mito_shell_params.txt)
 ```
-path/to/trinity/executable                                   #As for Step 1, leave blank if starting at this step
-path/to/samples_file/with/read/locations                     #As for Step 1, leave blank if starting at this step
-max_memory                                                   #As for Step 1, leave blank if starting at this step
-number_of_cores                                              #As for Step 1, leave blank if starting at this step
+path/to/trinity/executable                                   # As for Step 1, leave blank if starting at this step
+path/to/samples_file/with/read/locations                     # As for Step 1, leave blank if starting at this step
+max_memory                                                   # As for Step 1, leave blank if starting at this step
+number_of_cores                                              # As for Step 1, leave blank if starting at this step
 path/to/blast/bin/makeblastdb                                # New to this step: pathway to makeblastdb executable
 path/to/blast/bin/blastn                                     # New to this step: pathway to blastn executable
 path/to/seqtk                                                # New to this step: pathway to seqtk exectuable
