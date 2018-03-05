@@ -51,14 +51,15 @@ reference.fa           # located in the working folder so not giving absolute pa
 ```
 
 # The text file with the path to each sample's fasta file
+(only needed if you aren't sticking Step_1 in at Line 8 - just gives name and location of the assembly for each sample, tab delimited)
 ```
-/data/alana/wasp/B1_trinity_out_dir.Trinity.fasta
-/data/alana/wasp/B2_trinity_out_dir.Trinity.fasta
-/data/alana/wasp/B3_trinity_out_dir.Trinity.fasta
-/data/alana/wasp/B4_trinity_out_dir.Trinity.fasta
-/data/alana/wasp/B5_trinity_out_dir.Trinity.fasta
-/data/alana/wasp/B6_trinity_out_dir.Trinity.fasta
-/data/alana/wasp/B7_trinity_out_dir.Trinity.fasta
+B1	/data/alana/wasp/B1_trinity_out_dir.Trinity.fasta
+B2	/data/alana/wasp/B2_trinity_out_dir.Trinity.fasta
+B3	/data/alana/wasp/B3_trinity_out_dir.Trinity.fasta
+B4	/data/alana/wasp/B4_trinity_out_dir.Trinity.fasta
+B5	/data/alana/wasp/B5_trinity_out_dir.Trinity.fasta
+B6	/data/alana/wasp/B6_trinity_out_dir.Trinity.fasta
+B7	/data/alana/wasp/B7_trinity_out_dir.Trinity.fasta
 ```
 
 To execute 2_blast_fishing.sh:
