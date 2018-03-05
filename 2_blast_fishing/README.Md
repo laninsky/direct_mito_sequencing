@@ -16,14 +16,12 @@ path/to/trinity/executable #As for Step 1, leave blank if starting at this step
 path/to/samples_file/with/read/locations #As for Step 1, leave blank if starting at this step
 max_memory #As for Step 1, leave blank if starting at this step
 number_of_cores #As for Step 1, leave blank if starting at this step
-### The following lines (Line 5+) are new to this step:
-path/to/blast/bin/makeblastdb # pathway to makeblastdb executable
-path/to/blast/bin/blastn# pathway to blastn executable
-path/to/seqtk # path to seqtk exectuable
-Step_1 or location/of/file/giving/path/to/sample/fasta/files # If you are coming from Step_1 and running this script from the same 
-# directory then you can just put Step_1 and the script will grab the info on your sample fasta names from Line 2 of this file
-path/to/reference/fasta/file # You can have multiple references in this file
-percentage_identity # What percentage identity cut-off you'd like to use for matching your sample fastas to the reference
+path/to/blast/bin/makeblastdb # New to this step: pathway to makeblastdb executable
+path/to/blast/bin/blastn # New to this step: pathway to blastn executable
+path/to/seqtk # New to this step: path to seqtk exectuable
+Step_1 or location/of/file/giving/path/to/sample/fasta/files # New to this step: If you are coming from Step_1 and running this script from the same directory then you can just put Step_1 and the script will grab the info on your sample fasta names from Line 2 of mito_shell_params.txt. If not, you'll need to give location/of/file/giving/path/to/sample/fasta/files (described below)
+path/to/reference/fasta/file # New to this step: You can have multiple references in this file
+percentage_identity # New to this step: What percentage identity cut-off you'd like to use for matching your sample fastas to the 
 ```
 e.g. coming from Step_1
 ```
@@ -34,11 +32,32 @@ samples_file.txt # See Step 1 instructions for more details
 makeblastdb # Already installed in path, so just listing executable
 blastn # Already installed in path, so just listing executable
 seqtk # Already installed in path, so just listing executable
-
-
 Step_1
-``
+reference.fa # located in the working folder so not giving absolute path
+75 # using a relatively loose threshold of a 75% match to the reference
+```
 e.g. coming into this step after previously getting a fasta file for each sample
+```
+Trinity # See Step 1 instructions for more details
+samples_file.txt # See Step 1 instructions for more details
+200G # See Step 1 instructions for more details
+8 # See Step 1 instructions for more details
+makeblastdb # Already installed in path, so just listing executable
+blastn # Already installed in path, so just listing executable
+seqtk # Already installed in path, so just listing executable
+sample_fasta_names.txt # The text file with the path to each sample's fasta file (described below)
+reference.fa # located in the working folder so not giving absolute path
+75 # using a relatively loose threshold of a 75% match to the reference
+```
 
+# The text file with the path to each sample's fasta file
+```
+/data/alana/wasp/B1_trinity_out_dir.Trinity.fasta
+/data/alana/wasp/B2_trinity_out_dir.Trinity.fasta
+/data/alana/wasp/B3_trinity_out_dir.Trinity.fasta
+/data/alana/wasp/B4_trinity_out_dir.Trinity.fasta
+/data/alana/wasp/B5_trinity_out_dir.Trinity.fasta
+/data/alana/wasp/B6_trinity_out_dir.Trinity.fasta
+/data/alana/wasp/B7_trinity_out_dir.Trinity.fasta
+```
 
-grep ">" B4_trinity_out_dir.Trinity.fasta | awk '{print $2}' | sed 's/len=//g' | sort -n
