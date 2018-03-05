@@ -14,7 +14,7 @@ e.g.
 ```
 Trinity # Already installed in path, so "Trinity" is all that is needed to call the program
 samples_file.txt # See below for an example of what the samples_file should look like (also see Trinity -h)
-200GB # the max amount of memory you want to allow Trinity to use
+200G # the max amount of memory you want to allow Trinity to use
 8 # the number of CPUs you wish to utilize
 
 ```
