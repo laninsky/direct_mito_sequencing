@@ -1,3 +1,4 @@
+# 1_denovo.sh
 1_denovo.sh will wrap the various programs needed for denovo assembly of your mitogenomes (mostly Trinity), but it needs a few things from you:
 1) Cleaned (of adaptors/low-quality bases) paired end sequence files (i.e. R1.fq.gz and R2.fq.gz) for each sample
 2) samtools installed in your $PATH (Trinity dependency)
@@ -6,7 +7,7 @@
 5) A parameters file (mito_shell_params.txt), described below
 6) A samples_file (described below too)
 
-## The parameters file (mito_shell_params.txt)
+# The parameters file (mito_shell_params.txt)
 To run, mito_shell.sh needs a parameters file (mito_shell_params.txt) with the following:
 ```
 path/to/trinity/executable
@@ -22,7 +23,7 @@ samples_file.txt # See below for an example of what the samples_file should look
 8 # the number of CPUs you wish to utilize
 ```
 
-## The samples_file  (tab-delimited: sample name, R1.fq, R2.fq)
+# The samples_file  (tab-delimited: sample name, R1.fq, R2.fq)
 ```
 B1	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B1/B1_R1.fq.gz	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B1/B1_R2.fq.gz
 B2	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B2/B2_R1.fq.gz	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B2/B2_R2.fq.gz
@@ -35,7 +36,7 @@ B8	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B8/B8_R1.fq.gz	/mnt/hcs-gemmell/wa
 B9	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B9/B9_R1.fq.gz	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B9/B9_R2.fq.gz
 B10	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B10/B10_R1.fq.gz	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B10/B10_R2.fq.gz
 ```
-After getting all of this together, execute 1_denovo.sh by:
+# After getting all of this together, execute 1_denovo.sh by:
 ```
 bash 1_denovo.sh
 ```
