@@ -17,10 +17,10 @@ number_of_cores
 ```
 e.g.
 ```
-Trinity # Already installed in path, so "Trinity" is all that is needed to call the program
+Trinity          # Already installed in path, so "Trinity" is all that is needed to call the program
 samples_file.txt # See below for an example of what the samples_file should look like (tab delimited: name, R1.fq.gz, R2.fq.gz)
-200G # the max amount of memory you want to allow Trinity to use
-8 # the number of CPUs you wish to utilize
+200G             # the max amount of memory you want to allow Trinity to use
+8                # the number of CPUs you wish to utilize
 ```
 
 # The samples_file  (tab-delimited: sample name, R1.fq, R2.fq)
