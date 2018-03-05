@@ -15,7 +15,7 @@ path/to/samples_file/with/read/locations
 max_memory
 number_of_cores
 ```
-e.g.
+e.g. (remove comments if copying and pasting)
 ```
 Trinity          # Already installed in path, so "Trinity" is all that is needed to call the program
 samples_file.txt # See below for an example of what the samples_file should look like (tab delimited: name, R1.fq.gz, R2.fq.gz)
