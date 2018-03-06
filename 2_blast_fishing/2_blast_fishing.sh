@@ -15,8 +15,10 @@ numberofsamples=`wc -l $samplesfilepath | awk '{print $1}'`;
 for i in `seq 1 $numberofsamples`; 
 do samplename=`tail -n+$i $samplesfilepath | head -n1 | awk '{print $1}'`;
 $blastn -db reference_no_blank_lines.fasta -query ${samplename}_trinity_out_dir.Trinity.fasta -perc_identity $blastperc -outfmt '10 qseqid sseqid qlen slen' | cut -d , -f 1 | uniq > $samplename.namelist;
+$seqtk subseq ${samplename}_trinity_out_dir.Trinity.fasta ${samplename}.namelist | sed 's/>/>'"$samplename"'+/g' >> $samplename.oldblast.fasta;
+rm ${samplename}.namelist 
 
-done
+done;
 
 else
 numberofsamples=`wc -l $step1fasta | awk '{print $1}'`;
@@ -24,15 +26,9 @@ for i in `seq 1 $numberofsamples`;
 do samplename=`tail -n+$i $step1fasta | head -n1 | awk '{print $1}'`;
 samplefasta=`tail -n+$i $step1fasta | head -n1 | awk '{print $2}'`
 $blastn -db reference_no_blank_lines.fasta -query $samplefasta -perc_identity $blastperc -outfmt '10 qseqid sseqid qlen slen' | cut -d , -f 1 | uniq > $samplename.namelist;
+$seqtk subseq $samplefasta ${samplename}.namelist | sed 's/>/>'"$samplename"'+/g' >> $samplename.oldblast.fasta;
+rm ${samplename}.namelist 
 
 
-for j in `ls *.namelist`; 
-do seqname=`echo $j | sed "1s/.fasta.namelist//"` ; 
-$seqtk subseq $seqname.fasta $j | sed 's/>/>'"$seqname"'+/g' >> $seqname.oldblast.fasta;
 done;
-
-rm -rf *.namelist
-
-
-done
 fi
