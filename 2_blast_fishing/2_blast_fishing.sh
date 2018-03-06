@@ -25,7 +25,22 @@ oldblastln=$(($oldblastln + 0))
 newblastln=`wc -l $samplename.newblast.fasta | awk '{print $1}'`
 newblastln=$(($newblastln + 0))
 
-done;
+while [[ $oldblastln < $newblastln ]]
+do rm -rf *.oldblast.*
+mv $samplename.newblast.fasta $samplename.oldblast.fasta
+rm ${samplename}.namelist
+$makeblastdb -in $samplename.oldblast.fasta -dbtype nucl
+$blastn -db $samplename.oldblast.fasta -query ${samplename}_trinity_out_dir.Trinity.fasta  -perc_identity 95 -outfmt '10 qseqid sseqid qlen slen' | cut -d , -f 1 | uniq > $samplename.namelist
+$seqtk subseq ${samplename}_trinity_out_dir.Trinity.fasta ${samplename}.namelist  | sed 's/>/>'"$samplename"'+/g' >> $samplename.newblast.fasta
+oldblastln=`wc -l $samplename.oldblast.fasta | awk '{print $1}'`
+oldblastln=$(($oldblastln + 0))
+newblastln=`wc -l $samplename.newblast.fasta | awk '{print $1}'`
+newblastln=$(($newblastln + 0))
+done
+
+rm -rf *.oldblast.*
+
+done
 
 else
 numberofsamples=`wc -l $step1fasta | awk '{print $1}'`
@@ -56,8 +71,11 @@ newblastln=`wc -l $samplename.newblast.fasta | awk '{print $1}'`
 newblastln=$(($newblastln + 0))
 done
 
+rm -rf *.oldblast.*
 
+done
 
+rm -rf *.namelist
+rm -rf reference_no_blank_lines.fasta*
 
-done;
 fi
