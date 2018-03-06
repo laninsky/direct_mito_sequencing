@@ -75,7 +75,7 @@ rm -rf *.oldblast.*
 
 done
 
+fi
+
 rm -rf *.namelist
 rm -rf reference_no_blank_lines.fasta*
-
-fi
