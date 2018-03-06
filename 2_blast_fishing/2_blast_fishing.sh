@@ -25,5 +25,14 @@ do samplename=`tail -n+$i $step1fasta | head -n1 | awk '{print $1}'`;
 samplefasta=`tail -n+$i $step1fasta | head -n1 | awk '{print $2}'`
 $blastn -db reference_no_blank_lines.fasta -query $samplefasta -perc_identity $blastperc -outfmt '10 qseqid sseqid qlen slen' | cut -d , -f 1 | uniq > $samplename.namelist;
 
+
+for j in `ls *.namelist`; 
+do seqname=`echo $j | sed "1s/.fasta.namelist//"` ; 
+$seqtk subseq $seqname.fasta $j | sed 's/>/>'"$seqname"'+/g' >> $seqname.oldblast.fasta;
+done;
+
+rm -rf *.namelist
+
+
 done
 fi
