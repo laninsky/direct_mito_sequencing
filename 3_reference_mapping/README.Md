@@ -11,6 +11,7 @@
 
 
 # ref_map_file (tab-delimited: fasta_reference, R1.fq, R2.fq)
+We have found that "re-linearizing" the reference can be handy for recovering reads which span the artificial break point in the original reference (the "split" references in the example below).
 ```
 B1_new_reference_4th_iteration.fasta	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B1/B1_R1.fq.gz	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B1/B1_R2.fq.gz
 B1_new_reference_4th_iteration_split.fasta	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B1/B1_R1.fq.gz	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B1/B1_R2.fq.gz
