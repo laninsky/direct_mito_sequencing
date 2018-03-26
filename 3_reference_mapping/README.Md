@@ -21,10 +21,11 @@ path/to/GATK v3.8/GenomeAnalysisTK.jar
 ```
 e.g. (remove comments if copying and pasting)
 ```
-wasp_ref_map_file.txt                     # See below for an example of what the ref_map_file should look like (tab-delimited: fasta_reference, R1.fq, R2.fq)
-/usr/local/picard-tools-2.18.0/picard.jar # path to picard installation            
-8                                         # the number of CPUs you wish to utilize
-1                                         # The min coverage required (areas below this will not be output and regions of low coverage will be used to split up contigs
+wasp_ref_map_file.txt                                                            # See below for an example of what the ref_map_file should look like (tab-delimited: fasta_reference, R1.fq, R2.fq)
+/usr/local/picard-tools-2.18.0/picard.jar                                        # path to picard installation            
+8                                                                                # the number of CPUs you wish to utilize
+1                                                                                # The min coverage required (areas below this will not be output and regions of low coverage will be used to split up contigs
+/projects/uoo00107/bin/GenomeAnalysisTK-3.8-1-0-gf15c1c3ef/GenomeAnalysisTK.jar  # path to GATK 3.8 jar file
 ```
 
 # ref_map_file (tab-delimited: assembly_name,fasta_reference, R1.fq, R2.fq)
