@@ -22,9 +22,10 @@ samtools index tempsortmarked.bam
 gatk HaplotypeCaller -R $refname -I tempsortmarked.bam -stand-call-conf 30 -O temp_raw_variants.vcf --max-num-haplotypes-in-population 1
 
 
-/public/jdk1.8.0_112/bin/java -jar /public/GenomeAnalysisTK.jar -T ReadBackedPhasing -R sle117_final_mitobim.fasta -I temp_realigned_reads.bam  --variant temp_raw_variants.vcf -o temp_phased_SNPs.vcf
-/public/jdk1.8.0_112/bin/java -jar /public/GenomeAnalysisTK.jar -T FindCoveredIntervals -R sle117_final_mitobim.fasta -I temp_realigned_reads.bam -cov 4 -o temp_covered.list
-/public/jdk1.8.0_112/bin/java -jar /public/GenomeAnalysisTK.jar -T FastaAlternateReferenceMaker -V temp_phased_SNPs.vcf -R sle117_final_mitobim.fasta -L temp_covered.list -o $assemblyname.fasta
+gatk FindCoveredIntervals -R $refname -I tempsortmarked.bam -cov $minread -O temp_covered.list
+
+
+gatk FastaAlternateReferenceMaker -V temp_raw_variants.vcf -R sle117_final_mitobim.fasta -L temp_covered.list -o $assemblyname.fasta
 samtools pileup -f sle117_final_mitobim.fasta -l temp_covered.list temp_realigned_reads.bam > $assemblyname.pileup
 
 rm -rf *.fai
