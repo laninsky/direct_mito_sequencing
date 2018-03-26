@@ -4,10 +4,11 @@
 2. Fasta reference(s) you want to assemble to
 3. samtools installed in your $PATH 
 4. bwa installed in your $PATH
-5. GATK installed in your $PATH (tested on v 4+ of GATK)
-6. picard installed (you'll give the path in ref_map_params.txt, decribed below)
-7. A parameters file (ref_map_params.txt), described below
-8. A ref_map_file (described below too)
+5. GATK v 4 installed in your $PATH
+6. The path to GATK v3.8/GenomeAnalysisTK.jar (you'll give the path in ref_map_params.txt, decribed below. Unfortunately, some of the tools needed have been removed from GATK v 4)
+7. picard installed (you'll give the path in ref_map_params.txt, decribed below)
+8. A parameters file (ref_map_params.txt), described below
+9. A ref_map_file (described below too)
 
 # The parameters file (ref_map_params.txt)
 To run, 3_reference_mapping.sh needs a parameters file (ref_map_params.txt) with the following:
@@ -16,6 +17,7 @@ path/to/ref_map_file/with/references/and/read/files
 path/to/picard.jar
 number_of_cores
 min_read_depth_required
+path/to/GATK v3.8/GenomeAnalysisTK.jar
 ```
 e.g. (remove comments if copying and pasting)
 ```
