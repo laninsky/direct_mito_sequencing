@@ -15,11 +15,11 @@ samtools faidx $refname
 picarddict=`echo $refname | sed 's/.fasta/.dict/g'`
 java -jar $picard CreateSequenceDictionary R=$refname O=$picarddict
 bwa mem -t $numbercores $refname $left $right > temp.sam
-java -jar $picard
+java -jar $picard AddOrReplaceReadGroups I=temp.sam O=tempsort.sam SORT_ORDER=coordinate LB=rglib PL=illumina PU=phase SM=everyone
+java -jar $picard MarkDuplicates MAX_FILE_HANDLES=1000 I=tempsort.sam O=tempsortmarked.sam M=temp.metrics AS=TRUE
 
-/public/jdk1.8.0_112/bin/java -jar /public/picard.jar AddOrReplaceReadGroups I=temp.sam O=tempsort.sam SORT_ORDER=coordinate LB=rglib PL=illumina PU=phase SM=everyone
-/public/jdk1.8.0_112/bin/java -jar /public/picard.jar MarkDuplicates MAX_FILE_HANDLES=1000 I=tempsort.sam O=tempsortmarked.sam M=temp.metrics AS=TRUE
-/public/jdk1.8.0_112/bin/java -jar /public/picard.jar SamFormatConverter I=tempsortmarked.sam O=tempsortmarked.bam
+
+java -jar $picard SamFormatConverter I=tempsortmarked.sam O=tempsortmarked.bam
 samtools index tempsortmarked.bam
 /public/jdk1.8.0_112/bin/java -jar /public/GenomeAnalysisTK.jar -T RealignerTargetCreator -R sle117_final_mitobim.fasta -I tempsortmarked.bam -o tempintervals.list
 /public/jdk1.8.0_112/bin/java -jar /public/GenomeAnalysisTK.jar -T IndelRealigner -R sle117_final_mitobim.fasta -I tempsortmarked.bam -targetIntervals tempintervals.list -o temp_realigned_reads.bam
