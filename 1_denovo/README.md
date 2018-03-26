@@ -41,3 +41,4 @@ Make sure mito_shell_params.txt is in the same directory as 1_denovo.sh, and the
 ```
 bash 1_denovo.sh
 ```
+I generally take the resultant fasta files straight through to the next step (2_blast_fishing)
