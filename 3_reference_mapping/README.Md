@@ -15,12 +15,14 @@ To run, 3_reference_mapping.sh needs a parameters file (ref_map_params.txt) with
 path/to/ref_map_file/with/references/and/read/files
 path/to/picard.jar
 number_of_cores
+min_read_depth_required
 ```
 e.g. (remove comments if copying and pasting)
 ```
-wasp_ref_map_file.txt         # See below for an example of what the samples_file should look like 
-samples_file.txt              # See below for an example of what the ref_map_file should look like (tab-delimited: fasta_reference, R1.fq, R2.fq)
-8                             # the number of CPUs you wish to utilize
+wasp_ref_map_file.txt                     # See below for an example of what the ref_map_file should look like (tab-delimited: fasta_reference, R1.fq, R2.fq)
+/usr/local/picard-tools-2.18.0/picard.jar # path to picard installation            
+8                                         # the number of CPUs you wish to utilize
+1                                         # The min coverage required (areas below this will not be output and regions of low coverage will be used to split up contigs
 ```
 
 # ref_map_file (tab-delimited: fasta_reference, R1.fq, R2.fq)
