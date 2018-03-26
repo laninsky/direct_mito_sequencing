@@ -4,11 +4,24 @@
 2. Fasta reference(s) you want to assemble to
 3. samtools installed in your $PATH 
 4. bwa installed in your $PATH
-5. GATK installed in your $PATH
-6. picard installed in your $PATH
+5. GATK installed in your $PATH (tested on v 4+ of GATK)
+6. picard installed (you'll give the path in ref_map_params.txt, decribed below)
 7. A parameters file (ref_map_params.txt), described below
 8. A ref_map_file (described below too)
 
+# The parameters file (ref_map_params.txt)
+To run, 3_reference_mapping.sh needs a parameters file (ref_map_params.txt) with the following:
+```
+path/to/ref_map_file/with/references/and/read/files
+path/to/picard.jar
+number_of_cores
+```
+e.g. (remove comments if copying and pasting)
+```
+wasp_ref_map_file.txt         # See below for an example of what the samples_file should look like 
+samples_file.txt              # See below for an example of what the ref_map_file should look like (tab-delimited: fasta_reference, R1.fq, R2.fq)
+8                             # the number of CPUs you wish to utilize
+```
 
 # ref_map_file (tab-delimited: fasta_reference, R1.fq, R2.fq)
 We have found that "re-linearizing" the reference can be handy for recovering reads which span the artificial break point in the original reference (the "split" references in the example below).
