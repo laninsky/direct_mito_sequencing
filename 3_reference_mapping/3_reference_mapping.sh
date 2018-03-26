@@ -14,8 +14,8 @@ bwa index -a is $refname
 samtools faidx $refname 
 picarddict=`echo $refname | sed 's/.fasta/.dict/g'`
 java -jar $picard CreateSequenceDictionary R=$refname O=$picarddict
-bwa mem $refname $left $right > temp.sam
-
+bwa mem -t $numbercores $refname $left $right > temp.sam
+java -jar $picard
 
 /public/jdk1.8.0_112/bin/java -jar /public/picard.jar AddOrReplaceReadGroups I=temp.sam O=tempsort.sam SORT_ORDER=coordinate LB=rglib PL=illumina PU=phase SM=everyone
 /public/jdk1.8.0_112/bin/java -jar /public/picard.jar MarkDuplicates MAX_FILE_HANDLES=1000 I=tempsort.sam O=tempsortmarked.sam M=temp.metrics AS=TRUE
