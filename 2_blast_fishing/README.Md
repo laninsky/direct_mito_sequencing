@@ -67,3 +67,4 @@ Make sure mito_shell_params.txt is in the same directory as 2_blast_fishing.sh, 
 ```
 bash 2_blast_fishing.sh
 ```
+Following this step I tend to pull these "putative mitogenomic fragments" down into Geneious (or your favorite assembler) to try and place/order the contigs for each sample. I tend to fill any gaps with a close reference and then take these "sample specific references" through to the next step (3_reference_mapping)
