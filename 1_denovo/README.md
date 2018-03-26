@@ -8,7 +8,7 @@
 6) A samples_file (described below too)
 
 # The parameters file (mito_shell_params.txt)
-To run, mito_shell.sh needs a parameters file (mito_shell_params.txt) with the following:
+To run, 1_denovo.sh needs a parameters file (mito_shell_params.txt) with the following:
 ```
 path/to/trinity/executable
 path/to/samples_file/with/read/locations
