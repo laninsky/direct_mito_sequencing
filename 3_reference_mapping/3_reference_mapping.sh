@@ -34,7 +34,7 @@ java -jar $picard MarkDuplicates MAX_FILE_HANDLES=1000 I=tempsort.sam O=tempsort
 java -jar $picard SamFormatConverter I=tempsortmarked.sam O=tempsortmarked.bam
 samtools index tempsortmarked.bam
 java -jar $gatk38 -T FindCoveredIntervals -R $assemblyname.fasta -I tempsortmarked.bam -cov $minread -o temp_covered.list
-sed  's/:\|-/\t/gi' temp_covered.list > test.bed
+sed  's/:\|-/\t/gi' temp_covered.list > temp.bed
 samtools mpileup -f $assemblyname.fasta -l temp.bed tempsortmarked.bam > $assemblyname.pileup
 rm temp*
 rm -rf *.dict
