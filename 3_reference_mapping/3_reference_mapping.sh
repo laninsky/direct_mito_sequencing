@@ -37,12 +37,11 @@ java -jar $gatk38 -T FindCoveredIntervals -R $assemblyname.fasta -I tempsortmark
 sed  's/:\|-/\t/gi' temp_covered.list > test.bed
 samtools mpileup -f $assemblyname.fasta -l temp.bed tempsortmarked.bam > $assemblyname.pileup
 rm temp*
-
+rm -rf *.dict
 rm -rf *.fai
 rm -rf *.sa
 rm -rf *.amb
 rm -rf *.ann
 rm -rf *.bwt
 rm -rf *.pac
-
 done
