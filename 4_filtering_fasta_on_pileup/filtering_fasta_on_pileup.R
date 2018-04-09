@@ -25,7 +25,7 @@ for (i in pileup_files) {
             # 201A if the resulting contig is more than 100 bp in length
             if (nchar(tempseq)>=100) {
               write.table(paste(">",temp[j,1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
-             write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+              write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
             }  #201B
           } # 2000B  
         }  #20B
@@ -43,10 +43,11 @@ for (i in pileup_files) {
               if (nchar(tempseq)>=100) {
                 write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
                 write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+                x <- x+1
               }
             } #2000B  
             tempseq <- temp[j,3]
-            x <- x+1
+
           } #4B
         # 3AB what to do if from different underlying fragments and coverage is above 0  
         } else {
