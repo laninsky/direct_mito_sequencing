@@ -36,8 +36,8 @@ for (i in pileup_files) {
           # 4AB what to do if not sequential bases (start a new frag) and coverage is above 0 
           } else {
               if (nchar(tempseq)>=100) {
-                write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
-                write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
+                write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+                write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
               }
             tempseq <- temp[j,3]
             x <- x+1
@@ -45,8 +45,8 @@ for (i in pileup_files) {
         # 3AB what to do if from different underlying fragments and coverage is above 0  
         } else {
              if (nchar(tempseq)>=100) {
-                write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
-                write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
+                write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+                write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
               }
             tempseq <- temp[j,3]
             x <- 1
@@ -55,8 +55,8 @@ for (i in pileup_files) {
     #1AB what to do if coverage is 0      
     } else {        
         if (nchar(tempseq)>=100) {
-           write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
-           write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
+           write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+           write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
         }
         tempseq <- NULL  
     } #1B 
