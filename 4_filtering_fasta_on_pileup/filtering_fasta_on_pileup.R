@@ -4,6 +4,7 @@ pileup_files <- list.files(pattern=".pileup")
 for (i in pileup_files) {
   temp <- fread(i, select = c(1:4),sep="\t")
   output_name <- paste(gsub(".pileup","_pileup.fasta",i,fixed=TRUE))
+  outputnameforseqname <- paste(gsub(".pileup","",i,fixed=TRUE))
   tempseq <- NULL
   x <- 1
   for (j in 1:(dim(temp)[1])) {
@@ -24,7 +25,7 @@ for (i in pileup_files) {
           if (!(is.null(tempseq))) {
             # 201A if the resulting contig is more than 100 bp in length
             if (nchar(tempseq)>=100) {
-              write.table(paste(">",temp[j,1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+              write.table(paste(">",outputnameforseqname,"_",temp[j,1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
               write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
             }  #201B
           } # 2000B  
@@ -41,7 +42,7 @@ for (i in pileup_files) {
             # 2000A if tempseq is not null
             if (!(is.null(tempseq))) {
               if (nchar(tempseq)>=100) {
-                write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+                write.table(paste(">",outputnameforseqname,"_",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
                 write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
                 x <- x+1
               }
@@ -54,7 +55,7 @@ for (i in pileup_files) {
            # 2000A if tempseq is not null
            if (!(is.null(tempseq))) {
              if (nchar(tempseq)>=100) {
-                write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+                write.table(paste(">",outputnameforseqname,"_",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
                 write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
               }
            } # 2000B               
@@ -67,7 +68,7 @@ for (i in pileup_files) {
       # 2000A if tempseq is not null
       if (!(is.null(tempseq))) {
          if (nchar(tempseq)>=100) {
-            write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+            write.table(paste(">",outputnameforseqname,"_",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
             write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
             x <- x + 1
          }
