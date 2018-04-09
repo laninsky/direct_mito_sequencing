@@ -21,7 +21,7 @@ for (i in pileup_files) {
             tempseq <- paste(tempseq,temp[j,3],sep="")
           } #200B
           # 201A if the resulting contig is more than 100 bp in length
-          if (length(tempseq)>=100) {
+          if (nchar(tempseq)>=100) {
             write.table(paste(">",temp[j,1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
             write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
           }  #201B
@@ -35,7 +35,7 @@ for (i in pileup_files) {
             tempseq <- paste(tempseq,temp[j,3],sep="")
           # 4AB what to do if not sequential bases (start a new frag) and coverage is above 0 
           } else {
-              if (length(tempseq)>=100) {
+              if (nchar(tempseq)>=100) {
                 write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
                 write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
               }
@@ -44,7 +44,7 @@ for (i in pileup_files) {
           } #4B
         # 3AB what to do if from different underlying fragments and coverage is above 0  
         } else {
-             if (length(tempseq)>=100) {
+             if (nchar(tempseq)>=100) {
                 write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
                 write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
               }
@@ -54,7 +54,7 @@ for (i in pileup_files) {
       } #2B  
     #1AB what to do if coverage is 0      
     } else {        
-        if (length(tempseq)>=100) {
+        if (nchar(tempseq)>=100) {
            write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
            write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
         }
