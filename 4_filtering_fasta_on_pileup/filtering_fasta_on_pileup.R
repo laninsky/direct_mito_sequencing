@@ -71,7 +71,7 @@ for (i in pileup_files) {
          }
       } #2000B  
       tempseq <- NULL
-      if (!(temp[j,1]==temp[(j-1),1]) {
+      if (!(temp[j,1]==temp[(j-1),1])) {
         x <- 1
       }  
     } #1B 
