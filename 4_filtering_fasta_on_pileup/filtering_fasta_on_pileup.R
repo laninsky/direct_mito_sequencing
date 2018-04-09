@@ -2,7 +2,7 @@ library(data.table)
 pileup_files <- list.files(pattern=".pileup")
 
 for (i in pileup_files) {
-  temp <- fread(i, select = c(1:4))
+  temp <- fread(i, select = c(1:4),sep="\t")
   output_name <- paste(gsub(".pileup","_pileup.fasta",i,fixed=TRUE))
   tempseq <- NULL
   x <- 1
