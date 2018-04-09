@@ -22,8 +22,8 @@ for (i in pileup_files) {
           } #200B
           # 201A if the resulting contig is more than 100 bp in length
           if (nchar(tempseq)>=100) {
-            write.table(paste(">",temp[j,1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
-            write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
+            write.table(paste(">",temp[j,1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+            write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
           }  #201B
         }  #20B
       #2AB what to do for the rest of the rows when coverage is above 0
