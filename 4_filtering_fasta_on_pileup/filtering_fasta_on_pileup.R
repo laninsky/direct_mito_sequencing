@@ -70,7 +70,10 @@ for (i in pileup_files) {
             write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
          }
       } #2000B  
-      tempseq <- NULL  
+      tempseq <- NULL
+      if (!(temp[j,1]==temp[(j-1),1]) {
+        x <- 1
+      }  
     } #1B 
   } # end for loop through rows (j)  
 } # end for loop through files (i)         
