@@ -68,8 +68,8 @@ for (i in pileup_files) {
          if (nchar(tempseq)>=100) {
             write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
             write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+            x <- x + 1
          }
-        x <- x + 1
       } #2000B  
       tempseq <- NULL
       if (!(temp[j,1]==temp[(j-1),1])) {
