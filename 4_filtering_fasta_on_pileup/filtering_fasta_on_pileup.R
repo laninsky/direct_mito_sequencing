@@ -16,10 +16,15 @@ for (i in pileup_files) {
           tempseq <- paste(tempseq,temp[j,3],sep="")
         # 20AB what to do for the last row  
         } else {
+          # 200A if the last line in the file belongs with the rest of the contig
           if (temp[j,1]==temp[(j-1),1] & temp[j,2]==(temp[(j-1),2]+1)) {
             tempseq <- paste(tempseq,temp[j,3],sep="")
-            if (length(tempseq)>=100) {
-              write.table(append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
+          } #200B
+          # 201A if the resulting contig is more than 100 bp in length
+          if (length(tempseq)>=100) {
+            write.table(paste(">",temp[j,1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
+            write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
+          }  #201B
         }  #20B
       #2AB what to do for the rest of the rows when coverage is above 0
       } else {
@@ -30,18 +35,30 @@ for (i in pileup_files) {
             tempseq <- paste(tempseq,temp[j,3],sep="")
           # 4AB what to do if not sequential bases (start a new frag) and coverage is above 0 
           } else {
-            # do stuff
+              if (length(tempseq)>=100) {
+                write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
+                write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
+              }
+            tempseq <- temp[j,3]
             x <- x+1
           } #4B
         # 3AB what to do if from different underlying fragments and coverage is above 0  
         } else {
-          # do stuff
-          x <- 1
+             if (length(tempseq)>=100) {
+                write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
+                write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
+              }
+            tempseq <- temp[j,3]
+            x <- 1
         } #3B
       } #2B  
     #1AB what to do if coverage is 0      
     } else {        
-    # do stuff
+        if (length(tempseq)>=100) {
+           write.table(paste(">",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
+           write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=TRUE,col.names=TRUE)
+        }
+        tempseq <- NULL  
     } #1B 
   } # end for loop through rows (j)  
 } # end for loop through files (i)         
