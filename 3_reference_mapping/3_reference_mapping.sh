@@ -20,7 +20,7 @@ java -jar $picard AddOrReplaceReadGroups I=temp.sam O=tempsort.sam SORT_ORDER=co
 java -jar $picard MarkDuplicates MAX_FILE_HANDLES=1000 I=tempsort.sam O=tempsortmarked.sam M=temp.metrics AS=TRUE
 java -jar $picard SamFormatConverter I=tempsortmarked.sam O=tempsortmarked.bam
 samtools index tempsortmarked.bam
-gatk HaplotypeCaller -R $refname -I tempsortmarked.bam -stand-call-conf 30 -O temp_raw_variants.vcf --max-num-haplotypes-in-population 2
+gatk HaplotypeCaller -R $refname -I tempsortmarked.bam -O temp_raw_variants.vcf
 java -jar $gatk38 -T FindCoveredIntervals -R $refname -I tempsortmarked.bam -cov $minread -o temp_covered.list
 java -jar $gatk38 -T FastaAlternateReferenceMaker -V temp_raw_variants.vcf -R $refname -L temp_covered.list -o $assemblyname.fasta
 rm temp*
