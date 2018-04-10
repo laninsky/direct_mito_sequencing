@@ -22,19 +22,7 @@ java -jar $picard SamFormatConverter I=tempsortmarked.sam O=tempsortmarked.bam
 samtools index tempsortmarked.bam
 gatk HaplotypeCaller -R $refname -I tempsortmarked.bam -stand-call-conf 30 -O temp_raw_variants.vcf --max-num-haplotypes-in-population 1
 java -jar $gatk38 -T FindCoveredIntervals -R $refname -I tempsortmarked.bam -cov $minread -o temp_covered.list
-java -jar $gatk38 -T FastaAlternateReferenceMaker -V temp_raw_variants.vcf -R $refname -L temp_covered.list -o safetemp.fasta
-rm temp*
-mv safetemp.fasta temp.fasta
-bwa index -a is temp.fasta
-samtools faidx temp.fasta 
-picarddict=`echo temp.fasta | sed 's/.fasta/.dict/g'`
-java -jar $picard CreateSequenceDictionary R=temp.fasta O=$picarddict
-bwa mem -t $numbercores temp.fasta $left $right > temp.sam
-java -jar $picard AddOrReplaceReadGroups I=temp.sam O=tempsort.sam SORT_ORDER=coordinate LB=rglib PL=illumina PU=phase SM=everyone
-java -jar $picard MarkDuplicates MAX_FILE_HANDLES=1000 I=tempsort.sam O=tempsortmarked.sam M=temp.metrics AS=TRUE
-java -jar $picard SamFormatConverter I=tempsortmarked.sam O=tempsortmarked.bam
-samtools index tempsortmarked.bam
-samtools fasta tempsortmarked.bam > $assemblyname.fasta
+java -jar $gatk38 -T FastaAlternateReferenceMaker -V temp_raw_variants.vcf -R $refname -L temp_covered.list -o $assemblyname.fasta
 rm temp*
 bwa index -a is $assemblyname.fasta
 samtools faidx $assemblyname.fasta
@@ -47,7 +35,7 @@ java -jar $picard SamFormatConverter I=tempsortmarked.sam O=tempsortmarked.bam
 samtools index tempsortmarked.bam
 java -jar $gatk38 -T FindCoveredIntervals -R $assemblyname.fasta -I tempsortmarked.bam -cov $minread -o temp_covered.list
 sed  's/:\|-/\t/gi' temp_covered.list > temp.bed
-samtools mpileup -f $assemblyname.fasta -l temp.bed tempsortmarked.bam > $assemblyname.pileup
+samtools mpileup -l temp.bed tempsortmarked.bam > $assemblyname.pileup
 rm temp*
 rm -rf *.dict
 rm -rf *.fai
