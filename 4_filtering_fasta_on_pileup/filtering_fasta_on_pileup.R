@@ -3,7 +3,11 @@ pileup_files <- list.files(pattern=".pileup")
 
 row_by_row_analysis <- function(j) {
   temptemp <- c(temp[j,2],temp[j,4])
-
+  seqseq <- gsub("\\^.{1}","",temp[j,5])
+  seqseqlength <- nchar(seqseq)
+  temptemp <- c(temptemp,((nchar(temp[j,5])-seqseqlength)/2/temp[j,4]*100))
+  seqseq <- gsub("\\$","",seqseq)
+  temptemp <- c(temptemp,((seqseqlength-nchar(seqseq))/temp[j,4]*100))
 
 
 for (i in pileup_files) {
@@ -14,7 +18,7 @@ for (i in pileup_files) {
   x <- 1
 # titles graph with fragment name and original reference coordinates  
   
-  temprec <- NULL # now_pos,orig_pos,cov,perc_start,perc_end,perc_indel,A,C,G,T,F,R<70%?)
+  temprec <- NULL # now_pos,     ...orig_pos,cov,perc_start,perc_end,perc_indel,A,C,G,T,F,R<70%?)
   for (j in 1:(dim(temp)[1])) {
     #1A what to do if coverage is above 0
     if (temp[j,4] > 0) {
