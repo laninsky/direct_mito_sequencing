@@ -47,6 +47,12 @@ row_by_row_analysis <- function(j) {
     temptemp <- c(temptemp,((tempF+tempR)/temp[j,4]*100))
   }
   temptemp <- c(temptemp,(Frecord/temp[j,4]*100),(Rrecord/temp[j,4]*100))
+  if (max(unlist(temptemp)[6:9]) >= 70 ) {
+    temptemp <- c(temptemp,0)
+  } else {
+    temptemp <- c(temptemp,100)
+  }
+}  
 
 for (i in pileup_files) {
   temp <- fread(i, select = c(1:5),sep="\t")
