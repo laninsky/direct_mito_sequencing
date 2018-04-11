@@ -63,7 +63,7 @@ for (i in pileup_files) {
   x <- 1
 # titles graph with fragment name and original reference coordinates  
   
-  temprec <- NULL # now_pos,     ...orig_pos,cov,perc_start,perc_end,perc_indel,A,C,G,T,F,R<70%?)
+  temprec <- NULL 
   for (j in 1:(dim(temp)[1])) {
     #1A what to do if coverage is above 0
     if (temp[j,4] > 0) {
@@ -71,7 +71,7 @@ for (i in pileup_files) {
       if (j == 1 | j == (dim(temp)[1])) {
         # 20A what to do for the first row
         if (j == 1) {
-          temptemp <- 1
+          temptemp <- c(1,row_by_row_analysis(j))
           temprec <- 
           tempseq <- paste(tempseq,temp[j,3],sep="")
         # 20AB what to do for the last row  
