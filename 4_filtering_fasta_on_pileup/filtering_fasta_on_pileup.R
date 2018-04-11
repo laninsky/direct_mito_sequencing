@@ -72,7 +72,8 @@ for (i in pileup_files) {
         # 20A what to do for the first row
         if (j == 1) {
           temptemp <- c(1,row_by_row_analysis(j))
-          temprec <- 
+          temprec <- matrix(temptemp,nrow=1)
+          
           tempseq <- paste(tempseq,temp[j,3],sep="")
         # 20AB what to do for the last row  
         } else {
