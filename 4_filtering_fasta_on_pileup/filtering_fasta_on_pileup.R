@@ -32,6 +32,20 @@ row_by_row_analysis <- function(j) {
   seqseq <- unlist(strsplit(seqseq,"\\-"))
   temptemp <- c(temptemp,((insertions + length(seqseq) - 1)/temp[j,4]*100))
   seqseq <- removeindelsfromseq(seqseq)
+  Frecord <- NULL
+  Rrecord <- NULL
+  for (k in c("A","C","G","T")) {
+    if(temp[j,3]==k) {
+      tempF <- nchar(seqseq)-nchar(gsub("\\.","",seqseq))
+      tempR <- nchar(seqseq)-nchar(gsub("\\,","",seqseq))      
+    } else {
+      tempF <- nchar(seqseq)-nchar(gsub(k,"",seqseq))
+      tempR <- nchar(seqseq)-nchar(gsub(tolower(k),"",seqseq))
+    }  
+    Frecord <- Frecord + tempF  
+    Rrecord <- Rrecord + tempR
+    temptemp <- c(temptemp,((tempF+tempR)/temp[j,4]*100))
+  }  
 
 for (i in pileup_files) {
   temp <- fread(i, select = c(1:5),sep="\t")
