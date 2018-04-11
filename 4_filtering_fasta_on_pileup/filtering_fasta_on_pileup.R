@@ -1,6 +1,24 @@
 library(data.table)
 pileup_files <- list.files(pattern=".pileup")
 
+removeindelsfromseq <- function(seqseq) {
+  for (k in 1:length(seqseq)) {
+    tempseqseq <- unlist(strsplit(seqseq[k],""))
+    sitepos <- 1
+    to_delete <- NULL
+    while (tempseqseq[sitepos] %in% c(0,1,2,3,4,5,6,7,8,9)) {
+      to_delete <- paste(to_delete,tempseqseq[sitepos] ,sep="")
+      sitepos <- sitepos + 1
+    }
+    if (!(is.null(to_delete))) {
+      to_delete <- nchar(to_delete) + 1 + as.numeric(to_delete)
+      seqseq[k] <- substr(seqseq[k],to_delete,nchar(seqseq[k]))
+    }
+  }
+  seqseq <- paste(seqseq,collapse="")
+  return(seqseq)
+}  
+
 row_by_row_analysis <- function(j) {
   temptemp <- c(temp[j,2],temp[j,4])
   seqseq <- gsub("\\^.{1}","",temp[j,5])
@@ -8,7 +26,12 @@ row_by_row_analysis <- function(j) {
   temptemp <- c(temptemp,((nchar(temp[j,5])-seqseqlength)/2/temp[j,4]*100))
   seqseq <- gsub("\\$","",seqseq)
   temptemp <- c(temptemp,((seqseqlength-nchar(seqseq))/temp[j,4]*100))
-
+  seqseq <- unlist(strsplit(seqseq,"\\+"))
+  insertions <- length(seqseq) - 1
+  seqseq <- removeindelsfromseq(seqseq)
+  seqseq <- unlist(strsplit(seqseq,"\\-"))
+  temptemp <- c(temptemp,((insertions + length(seqseq) - 1)/temp[j,4]*100))
+  seqseq <- removeindelsfromseq(seqseq)
 
 for (i in pileup_files) {
   temp <- fread(i, select = c(1:5),sep="\t")
