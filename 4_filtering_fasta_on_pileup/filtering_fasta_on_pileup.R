@@ -55,6 +55,26 @@ row_by_row_analysis <- function(j) {
   return(temptemp)
 }  
 
+basecall <- function(j) {
+  if ((sum(unlist(temptemp[7:10])==max(unlist(temptemp[7:10]))))>1) {
+    tempseq <- paste(tempseq,"N",sep="")
+  } else {  
+          if (temptemp[7]==max(unlist(temptemp)[7:10])) {
+            tempseq <- paste(tempseq,"A",sep="")
+          } else {
+            if (temptemp[8]==max(unlist(temptemp)[7:10])) {
+              tempseq <- paste(tempseq,"C",sep="")
+            } else {  
+              if (temptemp[9]==max(unlist(temptemp)[7:10])) {
+                tempseq <- paste(tempseq,"G",sep="")
+         } else {  
+            tempseq <- paste(tempseq,"T",sep="")
+         }
+      }
+    }
+  }  
+}
+
 for (i in pileup_files) {
   temp <- fread(i, select = c(1:5),sep="\t")
   output_name <- paste(gsub(".pileup","_pileup.fasta",i,fixed=TRUE))
@@ -73,8 +93,6 @@ for (i in pileup_files) {
         if (j == 1) {
           temptemp <- c(1,row_by_row_analysis(j))
           temprec <- matrix(temptemp,nrow=1)
-          
-          tempseq <- paste(tempseq,temp[j,3],sep="")
         # 20AB what to do for the last row  
         } else {
           # 200A if the last line in the file belongs with the rest of the contig
