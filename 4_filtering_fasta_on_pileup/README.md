@@ -7,7 +7,7 @@ This script determines the consensus sequence in the mpileup file and outputs a 
 
 We do this additional step over just using the reference output by GATK's haplotypecaller, particularly for instances where we are using PCR-enrichment to generate our mitogenomes. This is because there are a few issues with using amplicons with Haplotypecaller (paraphrasing some of the discussion at the following link as well as associated posts: https://gatkforums.broadinstitute.org/gatk/discussion/8477/two-validated-variants-missed-by-haplotypecaller-using-mip-data-amplicon-like-data):
 
--- if you have high-coverage sequencing, some of the variants it finds will be PCR or sequencing noise. Haplotypecaller counts these errors against the max-num-haplpotypes/alleles/variants flags so you can get legit variation masked by the noise (when it constructs haplotypes incorporating the noise and those 'real variants' not ouput).
+-- if you have high-coverage sequencing, some of the variants it finds will be PCR or sequencing noise. Haplotypecaller counts these errors against the max-num-haplpotypes/alleles/variants flags so you can get legit variation masked by the noise (when it constructs haplotypes incorporating the noise and those 'real variants' not output).
 
 -- if the variant occurs towards the end of a fragment GATK doesn't trust it (because typically ends of reads are noisy with error, but in the case of an amplicon, sometimes the end of the read can legit be covering a nearby variant site).
 
