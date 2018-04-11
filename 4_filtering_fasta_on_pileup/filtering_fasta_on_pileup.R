@@ -1,6 +1,11 @@
 library(data.table)
 pileup_files <- list.files(pattern=".pileup")
 
+row_by_row_analysis <- function(j) {
+  temptemp <- c(temp[j,2],temp[j,4])
+
+
+
 for (i in pileup_files) {
   temp <- fread(i, select = c(1:5),sep="\t")
   output_name <- paste(gsub(".pileup","_pileup.fasta",i,fixed=TRUE))
@@ -9,7 +14,7 @@ for (i in pileup_files) {
   x <- 1
 # titles graph with fragment name and original reference coordinates  
   
-  temprec <- NULL # now_pos,orig_pos,cov,perc_start,perc_end,perc_indel,A,C,G,T,<70%?)
+  temprec <- NULL # now_pos,orig_pos,cov,perc_start,perc_end,perc_indel,A,C,G,T,F,R<70%?)
   for (j in 1:(dim(temp)[1])) {
     #1A what to do if coverage is above 0
     if (temp[j,4] > 0) {
@@ -17,15 +22,14 @@ for (i in pileup_files) {
       if (j == 1 | j == (dim(temp)[1])) {
         # 20A what to do for the first row
         if (j == 1) {
-          temptemp <- c(1,temp[j,2],temp[j,4])
-          seqseq <- 
+          temptemp <- 1
           temprec <- 
           tempseq <- paste(tempseq,temp[j,3],sep="")
         # 20AB what to do for the last row  
         } else {
           # 200A if the last line in the file belongs with the rest of the contig
           if (temp[j,1]==temp[(j-1),1] & temp[j,2]==(temp[(j-1),2]+1)) {
-            temptemp <- c(temprec[((dim(temprec)[1]+1),1],temp[j,2],temp[j,4])
+            temptemp <- temprec[((dim(temprec)[1]+1),1]
             temprec <-
             tempseq <- paste(tempseq,temp[j,3],sep="")
           } #200B
@@ -44,7 +48,7 @@ for (i in pileup_files) {
         if (temp[j,1]==temp[(j-1),1]) {
           # 4A what to do when no sequence gap between rows and coverage is above 0
           if (temp[j,2]==(temp[(j-1),2]+1)) {
-            temptemp <- c(temprec[((dim(temprec)[1]+1),1],temp[j,2],temp[j,4])
+            temptemp <- temprec[((dim(temprec)[1]+1),1]
             temprec <-
             tempseq <- paste(tempseq,temp[j,3],sep="")
           # 4AB what to do if not sequential bases (start a new frag) and coverage is above 0 
@@ -57,7 +61,7 @@ for (i in pileup_files) {
                 x <- x+1
               }
             } #2000B
-            temptemp <- c(1,temp[j,2],temp[j,4])
+            temptemp <- 1
             temprec <-
             tempseq <- temp[j,3]
 
@@ -71,7 +75,7 @@ for (i in pileup_files) {
                 write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
               }
            } # 2000B
-           temptemp <- c(1,temp[j,2],temp[j,4])
+           temptemp <- 1
            temprec <-
            tempseq <- temp[j,3]
            x <- 1
