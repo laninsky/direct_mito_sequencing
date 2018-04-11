@@ -52,6 +52,7 @@ row_by_row_analysis <- function(j) {
   } else {
     temptemp <- c(temptemp,100)
   }
+  return(temptemp)
 }  
 
 for (i in pileup_files) {
