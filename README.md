@@ -10,3 +10,4 @@ Because you might want to use different assemblies/already have "proto" mitochon
 
 3_reference_mapping: using sample-specific references, carrying out a reference alignment to get coverage for each sample
 
+4_filtering_fasta_on_pileup: using a reference alignment against the "final fasta" generated in step 3, generating a consensus fasta from samtools mpileup due to some issues with using gatk's haplotypecaller on amplicon data.
