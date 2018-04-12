@@ -98,12 +98,13 @@ for (i in pileup_files) {
         } else {
           # 200A if the last line in the file belongs with the rest of the contig
           if (temp[j,1]==temp[(j-1),1] & temp[j,2]==(temp[(j-1),2]+1)) {
-            temptemp <- c((as.numeric(temprec[(dim(temprec)[1]),1])+1),row_by_row_analysis(j))
             if (is.null(temprec)) {
+              temptemp <- c(1,row_by_row_analysis(j))            
               temprec <- matrix(temptemp,nrow=1)
-            } else {  
-            temprec <- rbind(temprec,temptemp)
-            }  
+            } else {
+              temptemp <- c((as.numeric(temprec[(dim(temprec)[1]),1])+1),row_by_row_analysis(j))    
+              temprec <- rbind(temprec,temptemp)
+            } 
             tempseq <- basecall(j)
           } #200B
           # 2000A if tempseq is not null
@@ -125,8 +126,8 @@ for (i in pileup_files) {
               temptemp <- c(1,row_by_row_analysis(j))            
               temprec <- matrix(temptemp,nrow=1)
             } else {
-            temptemp <- c((as.numeric(temprec[(dim(temprec)[1]),1])+1),row_by_row_analysis(j))    
-            temprec <- rbind(temprec,temptemp)
+              temptemp <- c((as.numeric(temprec[(dim(temprec)[1]),1])+1),row_by_row_analysis(j))    
+              temprec <- rbind(temprec,temptemp)
             }  
             tempseq <- basecall(j)
           # 4AB what to do if not sequential bases (start a new frag) and coverage is above 0 
