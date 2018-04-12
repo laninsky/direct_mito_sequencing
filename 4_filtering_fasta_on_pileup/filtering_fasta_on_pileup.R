@@ -84,6 +84,7 @@ for (i in pileup_files) {
   x <- 1
   temprec <- NULL 
   for (j in 1:(dim(temp)[1])) {
+    print(paste("Up to ",j," for sample ",i,sep=""))
     #1A what to do if coverage is above 0
     if (temp[j,4] > 0) {
       #2A what to do for the first row or last row
