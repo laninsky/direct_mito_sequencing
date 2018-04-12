@@ -121,10 +121,11 @@ for (i in pileup_files) {
         if (temp[j,1]==temp[(j-1),1]) {
           # 4A what to do when no sequence gap between rows and coverage is above 0
           if (temp[j,2]==(temp[(j-1),2]+1)) {
-            temptemp <- c((as.numeric(temprec[(dim(temprec)[1]),1])+1),row_by_row_analysis(j))
             if (is.null(temprec)) {
+              temptemp <- c(1,row_by_row_analysis(j))            
               temprec <- matrix(temptemp,nrow=1)
-            } else {  
+            } else {
+            temptemp <- c((as.numeric(temprec[(dim(temprec)[1]),1])+1),row_by_row_analysis(j))    
             temprec <- rbind(temprec,temptemp)
             }  
             tempseq <- basecall(j)
