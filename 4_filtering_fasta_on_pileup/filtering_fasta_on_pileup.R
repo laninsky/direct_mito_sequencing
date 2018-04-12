@@ -21,12 +21,19 @@ removeindelsfromseq <- function(seqseq) {
 }
 
 plotting_contig <- function(temprec) {
+ # setwd("..")
+ # setwd("Dropbox/wasp/ref_map")
+ # temprec <- as.matrix(read.table("test.table",stringsAsFactors = FALSE))[1:100,]
   temprecdf <- as.data.frame(temprec)
-  ggplot(temprecdf,aes(x = V1, y = V4, size = 2, color = "black" )) +
-  ggplot(melt(temprec)) + 
-  geom_line(mapping = aes(x = temprec[,1], y = temprec[,3]), size = 2, color = "black" , fill = "grey") +
-  geom_line(mapping = aes(x = temprec[,2], y = dt$prod*5), size = 2, color = "blue") + 
+  ggplot(temprecdf) + geom_line(mapping = aes(x = V1, y = V3), size = 5, color = "black") +
+  geom_area(aes(x = V1, y = V3), fill="dark grey") +
   scale_x_date(name = "bp", labels = NULL) +
+    
+    https://stackoverflow.com/questions/3099219/plot-with-2-y-axes-one-y-axis-on-the-left-and-another-y-axis-on-the-right
+  
+                
+                geom_line(mapping = aes(x = temprec$V1, y = temprec$V3, size = 2, color = "black") +
+  geom_line(mapping = aes(x = temprec[,2], y = dt$prod*5), size = 2, color = "blue") + 
   scale_y_continuous(name = "Interruptions/day", 
     sec.axis = sec_axis(~./5, name = "Productivity % of best", 
       labels = function(b) { paste0(round(b * 100, 0), "%")}))
