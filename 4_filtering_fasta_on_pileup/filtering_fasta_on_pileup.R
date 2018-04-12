@@ -72,7 +72,8 @@ basecall <- function(j) {
          }
       }
     }
-  }  
+  }
+  return(tempseq)
 }
 
 for (i in pileup_files) {
@@ -93,6 +94,7 @@ for (i in pileup_files) {
         if (j == 1) {
           temptemp <- c(1,row_by_row_analysis(j))
           temprec <- matrix(temptemp,nrow=1)
+          tempseq <- basecall(j)
         # 20AB what to do for the last row  
         } else {
           # 200A if the last line in the file belongs with the rest of the contig
@@ -117,7 +119,7 @@ for (i in pileup_files) {
           # 4A what to do when no sequence gap between rows and coverage is above 0
           if (temp[j,2]==(temp[(j-1),2]+1)) {
             temptemp <- temprec[((dim(temprec)[1]+1),1]
-            temprec <-
+            temprec <- 
             tempseq <- paste(tempseq,temp[j,3],sep="")
           # 4AB what to do if not sequential bases (start a new frag) and coverage is above 0 
           } else {
