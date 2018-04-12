@@ -21,10 +21,12 @@ removeindelsfromseq <- function(seqseq) {
 }
 
 plotting_contig <- function(temprec) {
-  ggplot() + 
-  geom_line(mapping = aes(x = temprec[,1], y = dt$numinter), stat = "identity", fill = "grey") +
+  temprecdf <- as.data.frame(temprec)
+  ggplot(temprecdf,aes(x = V1, y = V4, size = 2, color = "black" )) +
+  ggplot(melt(temprec)) + 
+  geom_line(mapping = aes(x = temprec[,1], y = temprec[,3]), size = 2, color = "black" , fill = "grey") +
   geom_line(mapping = aes(x = temprec[,2], y = dt$prod*5), size = 2, color = "blue") + 
-  scale_x_date(name = "Day", labels = NULL) +
+  scale_x_date(name = "bp", labels = NULL) +
   scale_y_continuous(name = "Interruptions/day", 
     sec.axis = sec_axis(~./5, name = "Productivity % of best", 
       labels = function(b) { paste0(round(b * 100, 0), "%")}))
