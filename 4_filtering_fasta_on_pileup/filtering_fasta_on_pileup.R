@@ -1,4 +1,5 @@
 library(data.table)
+library(ggplot2)
 pileup_files <- list.files(pattern=".pileup")
 
 removeindelsfromseq <- function(seqseq) {
@@ -17,7 +18,16 @@ removeindelsfromseq <- function(seqseq) {
   }
   seqseq <- paste(seqseq,collapse="")
   return(seqseq)
-}  
+}
+
+plotting_contig <- function(temprec) {
+  ggplot() + 
+  geom_line(mapping = aes(x = temprec[,1], y = dt$numinter), stat = "identity", fill = "grey") +
+  geom_line(mapping = aes(x = temprec[,2], y = dt$prod*5), size = 2, color = "blue") + 
+  scale_x_date(name = "Day", labels = NULL) +
+  scale_y_continuous(name = "Interruptions/day", 
+    sec.axis = sec_axis(~./5, name = "Productivity % of best", 
+      labels = function(b) { paste0(round(b * 100, 0), "%")}))
 
 row_by_row_analysis <- function(j) {
   temptemp <- c(temp[j,2],temp[j,4])
