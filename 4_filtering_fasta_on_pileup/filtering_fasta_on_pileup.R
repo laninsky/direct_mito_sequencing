@@ -28,6 +28,8 @@ plotting_contig <- function(temprec) {
   ggplot(temprecdf) + geom_line(mapping = aes(x = V1, y = V3), size = 5, color = "black") +
   geom_area(aes(x = V1, y = V3), fill="dark grey") +
   scale_x_date(name = "bp", labels = NULL) +
+  
+  labs(x="letters", y="LETTERS", title="Matrix") +
     
     https://stackoverflow.com/questions/3099219/plot-with-2-y-axes-one-y-axis-on-the-left-and-another-y-axis-on-the-right
   
