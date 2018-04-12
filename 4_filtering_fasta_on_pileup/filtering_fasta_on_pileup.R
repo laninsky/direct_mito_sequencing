@@ -82,8 +82,6 @@ for (i in pileup_files) {
   outputnameforseqname <- paste(gsub(".pileup","",i,fixed=TRUE))
   tempseq <- NULL
   x <- 1
-# titles graph with fragment name and original reference coordinates  
-  
   temprec <- NULL 
   for (j in 1:(dim(temp)[1])) {
     #1A what to do if coverage is above 0
@@ -139,10 +137,9 @@ for (i in pileup_files) {
                 x <- x+1
               }
             } #2000B
-            temptemp <- 1
-            temprec <-
-            tempseq <- temp[j,3]
-
+            temptemp <- c(1,row_by_row_analysis(j))
+            temprec <- matrix(temptemp,nrow=1)
+            tempseq <- basecall(j)
           } #4B
         # 3AB what to do if from different underlying fragments and coverage is above 0  
         } else {
@@ -153,9 +150,9 @@ for (i in pileup_files) {
                 write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
               }
            } # 2000B
-           temptemp <- 1
-           temprec <-
-           tempseq <- temp[j,3]
+           temptemp <- c(1,row_by_row_analysis(j))
+           temprec <- matrix(temptemp,nrow=1)
+           tempseq <- basecall(j)
            x <- 1
         } #3B
       } #2B  
