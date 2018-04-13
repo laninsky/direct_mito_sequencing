@@ -25,13 +25,19 @@ plotting_contig <- function(temprec) {
  # setwd("Dropbox/wasp/ref_map")
  # temprec <- as.matrix(read.table("test.table",stringsAsFactors = FALSE))[1:100,]
   temprecdf <- as.data.frame(temprec)
-  ggplot(temprecdf) + geom_line(mapping = aes(x = V1, y = V3), size = 5, color = "black") +
-  geom_area(aes(x = V1, y = V3), fill="dark grey") +
-  scale_x_date(name = "bp", labels = NULL) +
+  temprecdf[] <- lapply(temprecdf,as.numeric)
+  ggplot(temprecdf) + 
+  geom_line(mapping = aes(x = V1, y = V3), size = 5, color = "black") +
+  geom_area(aes(x = V1, y = V3), fill="dark grey") +  
+  scale_y_continuous(name = "Depth", sec.axis = sec_axis(~ . * 100 / max(temprecdf$V3), name = "Percentage")) +
   
-  labs(x="letters", y="LETTERS", title="Matrix") +
+  labs(x="bp", y="Percentage", title="#fragment name, original and modified reference coordinates") +
+  theme(axis.text=element_text(size=16),axis.title=element_text(size=20,face="bold")) +
     
-    https://stackoverflow.com/questions/3099219/plot-with-2-y-axes-one-y-axis-on-the-left-and-another-y-axis-on-the-right
+    name="Percentage",sec.axis = sec_axis(~(1/max(temprecdf$V3)/100), labels = "Percentage")  
+    
+  
+  https://stackoverflow.com/questions/3099219/plot-with-2-y-axes-one-y-axis-on-the-left-and-another-y-axis-on-the-right
   
                 
                 geom_line(mapping = aes(x = temprec$V1, y = temprec$V3, size = 2, color = "black") +
