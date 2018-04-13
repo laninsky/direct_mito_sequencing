@@ -21,9 +21,6 @@ removeindelsfromseq <- function(seqseq) {
 }
 
 plotting_contig <- function(temprec) {
- # setwd("..")
- # setwd("Dropbox/wasp/ref_map")
- # temprec <- as.matrix(read.table("test.table",stringsAsFactors = FALSE))[1:100,]
   temprecdf <- as.data.frame(temprec)
   temprecdf[] <- lapply(temprecdf,as.numeric)
   names(temprecdf) <- c("orig_ref","new_ref","depth","PercStart","PercStop","PercIndel","A","C","G","T","PercF","PercR","Mixed")
@@ -38,27 +35,11 @@ plotting_contig <- function(temprec) {
   geom_point(mapping = aes(x = orig_ref, y = PercStop * max(temprecdf$depth) / 100  ,fill="%_read_end (right axis)"), size = 2,shape=21) +
   geom_point(mapping = aes(x = orig_ref, y = PercIndel * max(temprecdf$depth) / 100 ,fill="%_showing_indels (right axis)"), size = 2, shape=21) +
   scale_fill_manual(name='',values=c("white","dark grey","blue","red","yellow","light green","black")) +
-  guides(fill = guide_legend(override.aes = list(shape = NA, colour="black"))) 
-  
-  
-
-
-
-  
-  labs(x="bp", y="Percentage", title="#fragment name, original and modified reference coordinates") +
-  theme(axis.text=element_text(size=16),axis.title=element_text(size=20,face="bold")) +
-    
-    name="Percentage",sec.axis = sec_axis(~(1/max(temprecdf$V3)/100), labels = "Percentage")  
-    
-  
-  https://stackoverflow.com/questions/3099219/plot-with-2-y-axes-one-y-axis-on-the-left-and-another-y-axis-on-the-right
-  
-                
-                geom_line(mapping = aes(x = temprec$V1, y = temprec$V3, size = 2, color = "black") +
-  geom_line(mapping = aes(x = temprec[,2], y = dt$prod*5), size = 2, color = "blue") + 
-  scale_y_continuous(name = "Interruptions/day", 
-    sec.axis = sec_axis(~./5, name = "Productivity % of best", 
-      labels = function(b) { paste0(round(b * 100, 0), "%")}))
+  guides(fill = guide_legend(override.aes = list(shape = NA, colour="black"))) +
+  if ((length(which(temprecdf$Mixed==100)))>0) {
+    annotate("text", x = (which(temprecdf$Mixed==100)), y=max(temprecdf$depth)+(max(temprecdf$depth)/10), label = (which(temprecdf$Mixed==100)))
+  }  
+}
 
 row_by_row_analysis <- function(j) {
   temptemp <- c(temp[j,2],temp[j,4])
@@ -154,6 +135,11 @@ for (i in pileup_files) {
             if (nchar(tempseq)>=100) {
               write.table(paste(">",outputnameforseqname,"_",temp[j,1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
               write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+              frag_graph <- plotting_contig(temprec) +
+                labs(x="bp", title=paste(outputnameforseqname,": original ref ",(min(temprec[,1])), " to ", (max(temprec[,1])), "\nCurrent ref ",(min(temprec[,2])), " to ", (max(temprec[,2])),sep="")) +
+                theme(axis.text=element_text(size=16),axis.title=element_text(size=20,face="bold"),title=element_text(size=20,face="bold"))
+
+
             }  #201B
           } # 2000B  
         }  #20B
