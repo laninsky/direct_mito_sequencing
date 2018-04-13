@@ -26,14 +26,24 @@ plotting_contig <- function(temprec) {
  # temprec <- as.matrix(read.table("test.table",stringsAsFactors = FALSE))[1:100,]
   temprecdf <- as.data.frame(temprec)
   temprecdf[] <- lapply(temprecdf,as.numeric)
+  names(temprecdf) <- c("orig_ref","new_ref","depth","PercStart","PercStop","PercIndel","A","C","G","T","PercF","PercR","Mixed")
   ggplot(temprecdf) + 
-  geom_line(mapping = aes(x = V1, y = V3), size = 5, color = "black") +
-  geom_area(aes(x = V1, y = V3), fill="dark grey") +  
-  scale_y_continuous(name = "Depth", sec.axis = sec_axis(~ . * 100 / max(temprecdf$V3), name = "Percentage")) +
-  geom_point(mapping = aes(x = V1, y = V6 * max(temprecdf$V3) / 100 ), size = 5, fill = "grey", shape=24) +
-  geom_point(mapping = aes(x = V1, y = V7 * max(temprecdf$V3) / 100 ), size = 5, fill = "white", shape=24) +
-  geom_point(mapping = aes(x = V1, y = V4 * max(temprecdf$V3) / 100 ), size = 5, fill = "blue", shape=21) +
-  geom_point(mapping = aes(x = V1, y = V5 * max(temprecdf$V3) / 100 ), size = 5, fill = "red", shape=21) +
+  geom_line(mapping = aes(x = orig_ref, y = depth), size = 2, color = "black") +
+  geom_area(aes(x = orig_ref, y = depth, fill="Depth")) +   
+  scale_y_continuous(name = "Depth", sec.axis = sec_axis(~ . * 100 / max(temprecdf$depth), name = "Percentage")) +
+  geom_bar(mapping = aes(x = orig_ref, y = Mixed * max(temprecdf$depth) / 100 ,fill="Apparent_heteroplasmy")) +
+  geom_point(mapping = aes(x = orig_ref, y = PercF * max(temprecdf$depth) / 100 ,fill="%_on_F_read"), size = 2, shape=21) +
+  geom_point(mapping = aes(x = orig_ref, y = PercR * max(temprecdf$depth) / 100 ,fill="%_on_R_read"), size = 2, shape=21) +
+  geom_point(mapping = aes(x = orig_ref, y = PercStart * max(temprecdf$depth) / 100 ,fill="%_read_start"), size = 2,  shape=21) +
+  geom_point(mapping = aes(x = orig_ref, y = PercStop * max(temprecdf$depth) / 100  ,fill="%_read_end"), size = 2,shape=21) +
+  geom_point(mapping = aes(x = orig_ref, y = PercIndel * max(temprecdf$depth) / 100 ,fill="%_showing_indels"), size = 2, shape=21) +
+  scale_fill_manual(name='',values=c("light green","white","yellow","black","blue","red")) +
+  guides(fill = guide_legend(override.aes = list(shape = NA, colour="black"))) +
+  
+  
+
+
+
   
   labs(x="bp", y="Percentage", title="#fragment name, original and modified reference coordinates") +
   theme(axis.text=element_text(size=16),axis.title=element_text(size=20,face="bold")) +
