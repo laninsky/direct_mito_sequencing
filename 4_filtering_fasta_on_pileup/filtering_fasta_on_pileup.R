@@ -135,6 +135,7 @@ for (i in pileup_files) {
             if (nchar(tempseq)>=100) {
               write.table(paste(">",outputnameforseqname,"_",temp[j,1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
               write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+              ## Need to select minimum in cases of there being multiple minimums
               frag_graph <- plotting_contig(temprec) +
                 labs(x="bp", title=paste(outputnameforseqname,": original ref ",(min(temprec[,1])), " to ", (max(temprec[,1])), "\nCurrent ref ",(min(temprec[,2])), " to ", (max(temprec[,2])),sep="")) +
                 theme(axis.text=element_text(size=16),axis.title=element_text(size=20,face="bold"),title=element_text(size=20,face="bold"))
