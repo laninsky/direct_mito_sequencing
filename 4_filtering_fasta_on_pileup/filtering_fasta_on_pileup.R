@@ -138,8 +138,7 @@ for (i in pileup_files) {
               frag_graph <- plotting_contig(temprec) +
                 labs(x="bp", title=paste(outputnameforseqname,": original ref ",(min(temprec[,1])), " to ", (max(temprec[,1])), "\nCurrent ref ",(min(temprec[,2])), " to ", (max(temprec[,2])),sep="")) +
                 theme(axis.text=element_text(size=16),axis.title=element_text(size=20,face="bold"),title=element_text(size=20,face="bold"))
-
-
+              ggsave(filename = paste(outputnameforseqname,".pdf",sep=""),plot = last_plot(), device = "pdf")
             }  #201B
           } # 2000B  
         }  #20B
@@ -164,6 +163,10 @@ for (i in pileup_files) {
               if (nchar(tempseq)>=100) {
                 write.table(paste(">",outputnameforseqname,"_",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
                 write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+                frag_graph <- plotting_contig(temprec) +
+                  labs(x="bp", title=paste(outputnameforseqname,": original ref ",(min(temprec[,1])), " to ", (max(temprec[,1])), "\nCurrent ref ",(min(temprec[,2])), " to ", (max(temprec[,2])),sep="")) +
+                  theme(axis.text=element_text(size=16),axis.title=element_text(size=20,face="bold"),title=element_text(size=20,face="bold"))
+                ggsave(filename = paste(outputnameforseqname,".pdf",sep=""),plot = last_plot(), device = "pdf")
                 x <- x+1
               }
             } #2000B
@@ -178,6 +181,10 @@ for (i in pileup_files) {
              if (nchar(tempseq)>=100) {
                 write.table(paste(">",outputnameforseqname,"_",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
                 write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+                frag_graph <- plotting_contig(temprec) +
+                  labs(x="bp", title=paste(outputnameforseqname,": original ref ",(min(temprec[,1])), " to ", (max(temprec[,1])), "\nCurrent ref ",(min(temprec[,2])), " to ", (max(temprec[,2])),sep="")) +
+                  theme(axis.text=element_text(size=16),axis.title=element_text(size=20,face="bold"),title=element_text(size=20,face="bold"))
+                ggsave(filename = paste(outputnameforseqname,".pdf",sep=""),plot = last_plot(), device = "pdf")
               }
            } # 2000B
            temptemp <- c(1,row_by_row_analysis(j))
@@ -193,6 +200,10 @@ for (i in pileup_files) {
          if (nchar(tempseq)>=100) {
             write.table(paste(">",outputnameforseqname,"_",temp[(j-1),1],"_",x,sep=""),output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
             write.table(tempseq,output_name,append=TRUE,quote=FALSE,row.names=FALSE,col.names=FALSE)
+            frag_graph <- plotting_contig(temprec) +
+              labs(x="bp", title=paste(outputnameforseqname,": original ref ",(min(temprec[,1])), " to ", (max(temprec[,1])), "\nCurrent ref ",(min(temprec[,2])), " to ", (max(temprec[,2])),sep="")) +
+              theme(axis.text=element_text(size=16),axis.title=element_text(size=20,face="bold"),title=element_text(size=20,face="bold"))
+            ggsave(filename = paste(outputnameforseqname,".pdf",sep=""),plot = last_plot(), device = "pdf")
             x <- x + 1
          }
       } #2000B  
