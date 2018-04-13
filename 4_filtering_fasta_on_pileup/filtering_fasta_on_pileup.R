@@ -30,6 +30,10 @@ plotting_contig <- function(temprec) {
   geom_line(mapping = aes(x = V1, y = V3), size = 5, color = "black") +
   geom_area(aes(x = V1, y = V3), fill="dark grey") +  
   scale_y_continuous(name = "Depth", sec.axis = sec_axis(~ . * 100 / max(temprecdf$V3), name = "Percentage")) +
+  geom_point(mapping = aes(x = V1, y = V6 * max(temprecdf$V3) / 100 ), size = 5, fill = "grey", shape=24) +
+  geom_point(mapping = aes(x = V1, y = V7 * max(temprecdf$V3) / 100 ), size = 5, fill = "white", shape=24) +
+  geom_point(mapping = aes(x = V1, y = V4 * max(temprecdf$V3) / 100 ), size = 5, fill = "blue", shape=21) +
+  geom_point(mapping = aes(x = V1, y = V5 * max(temprecdf$V3) / 100 ), size = 5, fill = "red", shape=21) +
   
   labs(x="bp", y="Percentage", title="#fragment name, original and modified reference coordinates") +
   theme(axis.text=element_text(size=16),axis.title=element_text(size=20,face="bold")) +
