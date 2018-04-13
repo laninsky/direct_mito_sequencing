@@ -28,17 +28,17 @@ plotting_contig <- function(temprec) {
   temprecdf[] <- lapply(temprecdf,as.numeric)
   names(temprecdf) <- c("orig_ref","new_ref","depth","PercStart","PercStop","PercIndel","A","C","G","T","PercF","PercR","Mixed")
   ggplot(temprecdf) + 
-  geom_line(mapping = aes(x = orig_ref, y = depth), size = 2, color = "black") +
-  geom_area(aes(x = orig_ref, y = depth, fill="Depth")) +   
+  geom_line(mapping = aes(x = orig_ref, y = depth), size = 1, color = "black") +
+  geom_area(aes(x = orig_ref, y = depth, fill="Depth (left axis)")) +   
   scale_y_continuous(name = "Depth", sec.axis = sec_axis(~ . * 100 / max(temprecdf$depth), name = "Percentage")) +
-  geom_bar(mapping = aes(x = orig_ref, y = Mixed * max(temprecdf$depth) / 100 ,fill="Apparent_heteroplasmy")) +
-  geom_point(mapping = aes(x = orig_ref, y = PercF * max(temprecdf$depth) / 100 ,fill="%_on_F_read"), size = 2, shape=21) +
-  geom_point(mapping = aes(x = orig_ref, y = PercR * max(temprecdf$depth) / 100 ,fill="%_on_R_read"), size = 2, shape=21) +
-  geom_point(mapping = aes(x = orig_ref, y = PercStart * max(temprecdf$depth) / 100 ,fill="%_read_start"), size = 2,  shape=21) +
-  geom_point(mapping = aes(x = orig_ref, y = PercStop * max(temprecdf$depth) / 100  ,fill="%_read_end"), size = 2,shape=21) +
-  geom_point(mapping = aes(x = orig_ref, y = PercIndel * max(temprecdf$depth) / 100 ,fill="%_showing_indels"), size = 2, shape=21) +
-  scale_fill_manual(name='',values=c("light green","white","yellow","black","blue","red")) +
-  guides(fill = guide_legend(override.aes = list(shape = NA, colour="black"))) +
+  geom_bar(stat="identity",mapping = aes(x = orig_ref, y = Mixed * max(temprecdf$depth) / 100 ,fill="Heteroplasmy (presence/absence)"),colour="black") +
+  geom_point(mapping = aes(x = orig_ref, y = PercF * max(temprecdf$depth) / 100 ,fill="%_on_F_read (right axis)"), size = 2, shape=21) +
+  geom_point(mapping = aes(x = orig_ref, y = PercR * max(temprecdf$depth) / 100 ,fill="%_on_R_read (right axis)"), size = 2, shape=21) +
+  geom_point(mapping = aes(x = orig_ref, y = PercStart * max(temprecdf$depth) / 100 ,fill="%_read_beginning (right axis)"), size = 2,  shape=21) +
+  geom_point(mapping = aes(x = orig_ref, y = PercStop * max(temprecdf$depth) / 100  ,fill="%_read_end (right axis)"), size = 2,shape=21) +
+  geom_point(mapping = aes(x = orig_ref, y = PercIndel * max(temprecdf$depth) / 100 ,fill="%_showing_indels (right axis)"), size = 2, shape=21) +
+  scale_fill_manual(name='',values=c("white","dark grey","blue","red","yellow","light green","black")) +
+  guides(fill = guide_legend(override.aes = list(shape = NA, colour="black"))) 
   
   
 
