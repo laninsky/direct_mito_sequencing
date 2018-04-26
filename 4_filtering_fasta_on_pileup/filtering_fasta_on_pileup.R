@@ -210,8 +210,10 @@ for (i in pileup_files) {
       } #2000B  
       tempseq <- NULL
       temprec <- NULL
-      if (!(temp[j,1]==temp[(j-1),1])) {
-        x <- 1
+      if (!(j == 1)) {
+        if (!(temp[j,1]==temp[(j-1),1])) {
+          x <- 1
+        }  
       }  
     } #1B 
   } # end for loop through rows (j)  
