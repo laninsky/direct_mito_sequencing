@@ -15,7 +15,12 @@ In addition to outputting the fasta_file, the script will also output a pdf plot
 
 An alternative is running filtering_fasta_with_min_cov.R. This requires a file named "pileup_params.txt" which has the pileup file name in the first column, and the coverage below which you do not want any fasta contigs written out in the right column e.g.:
 ```
-
+B5.pileup       793
+B5split.pileup  793
+B8.pileup       796
+B8split.pileup  796
+B9.pileup       792
+B9split.pileup  792
 ```
 Run this code by:
 ```
