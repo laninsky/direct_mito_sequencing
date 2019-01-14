@@ -37,7 +37,7 @@ R: R Core Team. 2015. R: A language and environment for statistical computing. U
 ```
 Along with the programs above, to cite this pipeline:
 ```
-Alexander, A. 4_filtering_fasta_on_pileup v0.0. Available from: https://github.com/laninsky/direct_mito_sequencing/edit/master/4_filtering_fasta_on_pileup/
+Alexander, A. 2018. 4_filtering_fasta_on_pileup v0.0. Available from: https://github.com/laninsky/direct_mito_sequencing/edit/master/4_filtering_fasta_on_pileup/
 ```
 ### Version history
 ```
