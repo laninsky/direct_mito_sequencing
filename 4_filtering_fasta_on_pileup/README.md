@@ -26,3 +26,19 @@ Run this code by:
 ```
 filtering_fasta_with_min_cov.R
 ```
+### Programs/packages necessary for the pipeline:
+```
+data.table: M Dowle, A Srinivasan, T Short, S Lianoglou with contributions from R Saporta and E Antonyan (2015). data.table: Extension of Data.frame. R package version 1.9.6. http://CRAN.R-project.org/package=data.table  (for up-to-date citation information run citation("data.table" in R)
+
+ggplot2: H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
+
+R: R Core Team. 2015. R: A language and environment for statistical computing. URL http://www.R-project.org/. R Foundation for Statistical Computing, Vienna, Austria. https://www.r-project.org/
+```
+Along with the programs above, to cite this pipeline:
+```
+Alexander, A. 4_filtering_fasta_on_pileup v0.0. Available from: https://github.com/laninsky/direct_mito_sequencing/edit/master/4_filtering_fasta_on_pileup/
+```
+### Version history
+```
+v0.0 This version of pipeline used in TBD
+```
