@@ -1,3 +1,4 @@
+# 4_filtering_fasta_on_pileup 
 4_filtering_fasta_on_pileup works by shoving filtering_fasta_on_pileup.R into the directory with your pileup files (suffixed by *.pileup) and running it by:
 ```
 Rscript filtering_fasta_on_pileup.R
