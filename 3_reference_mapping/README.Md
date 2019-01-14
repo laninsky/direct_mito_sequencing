@@ -68,7 +68,7 @@ samtools: See citation info at: http://www.htslib.org/doc/#manual-pages
 ```
 Along with the programs above, to cite this pipeline:
 ```
-Alexander, A. 3_reference_mapping.sh v0.0. Available from: https://github.com/laninsky/direct_mito_sequencing/edit/master/3_reference_mapping
+Alexander, A. 2018. 3_reference_mapping.sh v0.0. Available from: https://github.com/laninsky/direct_mito_sequencing/edit/master/3_reference_mapping
 ```
 ### Version history
 ```
