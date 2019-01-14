@@ -1,3 +1,4 @@
+# 3_reference_mapping.sh v0.0
 3_reference_mapping.sh will wrap the various programs needed for a reference assembly of your mitogenomes, but it needs a few things from you:
 
 1. Cleaned (of adaptors/low-quality bases) paired end sequence files (i.e. R1.fq.gz and R2.fq.gz) for each sample
@@ -51,4 +52,25 @@ B9	B9_new_reference_4th_iteration.fasta	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleanda
 B9split	B9_new_reference_4th_iteration_split.fasta	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B9/B9_R1.fq.gz	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B9/B9_R2.fq.gz
 B10	B10_new_reference_5th_iteration.fasta	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B10/B10_R1.fq.gz	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B10/B10_R2.fq.gz
 B10split	B10_new_reference_5th_iteration_split.fasta	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B10/B10_R1.fq.gz	/mnt/hcs-gemmell/wasp/mtDNA_data/Cleandata/B10/B10_R2.fq.gz
+```
+
+### Programs/packages necessary for the pipeline:
+```
+bwa: See citation info at: http://bio-bwa.sourceforge.net/bwa.shtml#13 and Li, H. "Toward better understanding of artifacts in variant calling from high-coverage samples." Bioinformatics (Oxford, England) 30, no. 20 (2014): 2843.
+
+GATK: See citation info at https://www.broadinstitute.org/gatk/about/citing
+
+java
+
+picard: http://broadinstitute.github.io/picard/
+
+samtools: See citation info at: http://www.htslib.org/doc/#manual-pages
+```
+Along with the programs above, to cite this pipeline:
+```
+Alexander, A. 3_reference_mapping.sh v0.0. Available from: https://github.com/laninsky/direct_mito_sequencing/edit/master/3_reference_mapping
+```
+### Version history
+```
+v0.0 This version of pipeline used in TBD
 ```
