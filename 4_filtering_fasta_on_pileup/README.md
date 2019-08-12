@@ -38,8 +38,10 @@ R: R Core Team. 2015. R: A language and environment for statistical computing. U
 Along with the programs above, to cite this pipeline:
 ```
 Alexander, A. 2018. 4_filtering_fasta_on_pileup v0.0. Available from: https://github.com/laninsky/direct_mito_sequencing/edit/master/4_filtering_fasta_on_pileup/
+
+Dobelmann, J., Alexander, A., Baty, J.W., Gemmell, N.J., Gruber, M.A., Quinn, O., Wenseleers, T. and Lesterv, P.J., 2019. The association between mitochondrial genetic variation and reduced colony fitness in an invasive wasp. Molecular Ecology.
 ```
 ### Version history
 ```
-v0.0 This version of pipeline used in TBD
+v0.0 This version of pipeline used in Dobelmann et al. (2019)
 ```
