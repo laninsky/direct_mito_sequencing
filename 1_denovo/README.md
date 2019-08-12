@@ -42,3 +42,10 @@ Make sure mito_shell_params.txt is in the same directory as 1_denovo.sh, and the
 bash 1_denovo.sh
 ```
 I generally take the resultant fasta files straight through to the next step (2_blast_fishing)
+
+# Version history
+v0.0 This version of pipeline used in TBD.
+
+Along with the paper above, to cite this pipeline:  
+Alexander, A. 2018. 1_denovo.sh v0.0. Available from: https://github.com/laninsky/direct_mito_sequencing/edit/master/3_reference_mapping
+(also please make sure to cite separately the component programs)
