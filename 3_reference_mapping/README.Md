@@ -69,8 +69,10 @@ samtools: See citation info at: http://www.htslib.org/doc/#manual-pages
 Along with the programs above, to cite this pipeline:
 ```
 Alexander, A. 2018. 3_reference_mapping.sh v0.0. Available from: https://github.com/laninsky/direct_mito_sequencing/edit/master/3_reference_mapping
+
+Dobelmann, J., Alexander, A., Baty, J.W., Gemmell, N.J., Gruber, M.A., Quinn, O., Wenseleers, T. and Lesterv, P.J., 2019. The association between mitochondrial genetic variation and reduced colony fitness in an invasive wasp. Molecular Ecology.
 ```
 ### Version history
 ```
-v0.0 This version of pipeline used in TBD
+v0.0 This version of pipeline used in Dobelmann et al. (2019)
 ```
