@@ -70,7 +70,8 @@ bash 2_blast_fishing.sh
 Following this step I tend to pull these "putative mitogenomic fragments" down into Geneious (or your favorite assembler) to try and place/order the contigs for each sample. I tend to fill any gaps with a close reference and then take these "sample specific references" through to the next step (3_reference_mapping)
 
 # Version history
-v0.0 This version of pipeline used in TBD.
+v0.0 This version of pipeline used in:  
+Dobelmann, J., Alexander, A., Baty, J.W., Gemmell, N.J., Gruber, M.A., Quinn, O., Wenseleers, T. and Lester, P.J., 2019. The association between mitochondrial genetic variation and reduced colony fitness in an invasive wasp. Molecular ecology, 28(14), pp.3324-3338.
 
 Along with the paper above, to cite this pipeline:  
 Alexander, A. 2018. 2_blast_fishing.sh v0.0. Available from: https://github.com/laninsky/direct_mito_sequencing/edit/master/3_reference_mapping
