@@ -73,5 +73,4 @@ Alexander, A. 2018. 3_reference_mapping.sh v0.0. Available from: https://github.
 Dobelmann, J., Alexander, A., Baty, J.W., Gemmell, N.J., Gruber, M.A., Quinn, O., Wenseleers, T. and Lesterv, P.J., 2019. The association between mitochondrial genetic variation and reduced colony fitness in an invasive wasp. Molecular Ecology.
 ```
 ### Version history
-v0.0 This version of pipeline used in: 
-Dobelmann, J., Alexander, A., Baty, J.W., Gemmell, N.J., Gruber, M.A., Quinn, O., Wenseleers, T. and Lester, P.J., 2019. The association between mitochondrial genetic variation and reduced colony fitness in an invasive wasp. Molecular ecology, 28(14), pp.3324-3338.
+v0.0 This version of pipeline used in: Dobelmann et al. (2019
