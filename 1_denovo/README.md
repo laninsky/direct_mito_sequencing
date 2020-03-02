@@ -44,7 +44,8 @@ bash 1_denovo.sh
 I generally take the resultant fasta files straight through to the next step (2_blast_fishing)
 
 # Version history
-v0.0 This version of pipeline used in TBD.
+v0.0 This version of pipeline used in:  
+Dobelmann, J., Alexander, A., Baty, J.W., Gemmell, N.J., Gruber, M.A., Quinn, O., Wenseleers, T. and Lester, P.J., 2019. The association between mitochondrial genetic variation and reduced colony fitness in an invasive wasp. Molecular ecology, 28(14), pp.3324-3338.
 
 Along with the paper above, to cite this pipeline:  
 Alexander, A. 2018. 1_denovo.sh v0.0. Available from: https://github.com/laninsky/direct_mito_sequencing/edit/master/3_reference_mapping
